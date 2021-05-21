@@ -5,8 +5,6 @@ import { GlobalContext } from '../context/GlobalState';
 export const TransactionList = () => {
     const { transactions } = useContext(GlobalContext);
 
-    //console.log(context);
-
     return (
         <React.Fragment>
             <h3>Transaction History</h3>

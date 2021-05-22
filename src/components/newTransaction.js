@@ -5,7 +5,7 @@ import { GlobalContext } from '../context/GlobalState';
 export const NewTransaction = () => {
     const { transactions } = useContext(GlobalContext);
     const [TransactionName, setTransactionName] = useState('');
-    const [expType, setExpType] = useState('');
+    const [expType, setExpType] = useState('plus');
     const [amount, setAmount] = useState(0);
 
     const { addTransaction } = useContext(GlobalContext);
@@ -39,7 +39,7 @@ export const NewTransaction = () => {
 
         //clear states
         setTransactionName('');
-        setExpType('');
+        setExpType('plus');
         setAmount(0);
 
     }
@@ -62,7 +62,7 @@ export const NewTransaction = () => {
                     <select 
                     id="expType" 
                     name="expType"
-                    //defaultValue="plus"
+                    value={expType}
                     onChange={(e) => setExpType(e.target.value)}>
                         <option value="plus">Income</option>
                         <option value="minus">Expense</option>

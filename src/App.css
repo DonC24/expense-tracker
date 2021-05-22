@@ -117,10 +117,16 @@ select {
   box-shadow: var(--box-shadow);
   color: #333;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
   padding: 10px;
   margin: 10px 0;
+}
+
+.list li .break {
+  flex-basis: 100%;
+  height: 0;
 }
 
 .list li.plus {

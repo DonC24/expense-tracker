@@ -7,6 +7,7 @@ export const NewTransaction = () => {
     const [TransactionName, setTransactionName] = useState('');
     const [expType, setExpType] = useState('plus');
     const [amount, setAmount] = useState(0);
+    const [createdDate, setCreatedDate] = useState(new Date());
 
     const { addTransaction } = useContext(GlobalContext);
 
@@ -15,8 +16,8 @@ export const NewTransaction = () => {
 
         let lastId = 0;
         let newId = 0;
-        let expAmount = amount
-
+        let expAmount = amount;
+        let today = new Date();
 
         if(transactions.length === 0) {
             newId = lastId + 1;
@@ -28,19 +29,23 @@ export const NewTransaction = () => {
         if(expType === 'minus'){
             expAmount = amount * -1;
         }
+        
+        setCreatedDate(today);
 
         const newTransaction = {
             id: newId,
             TransactionName: TransactionName,
-            amount: parseFloat(expAmount)
+            amount: parseFloat(expAmount),
+            createdDate: today
         }
-
+        console.log(newTransaction);
         addTransaction(newTransaction);
 
         //clear states
         setTransactionName('');
         setExpType('plus');
         setAmount(0);
+        setCreatedDate(new Date());
 
     }
 
@@ -75,10 +80,17 @@ export const NewTransaction = () => {
                 <input 
                     type="number" 
                     id="amount" 
+                    min="0"
+                    step=".01"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)} 
                     placeholder="Enter amount" />
                 </div>
+                <input 
+                    type="hidden" 
+                    id="createdDate"
+                    name="createdDate" 
+                    value={createdDate} />
                 <button className="btn">Add transaction</button>
             </form>
         </React.Fragment>

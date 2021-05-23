@@ -1,17 +1,16 @@
 export default function AppReducer (state, action) {
+    let transactions;
     switch(action.type) {
         case 'ADD_TRANSACTION':
-            return {
-                ...state,
-                transactions: [action.payload, ...state.transactions]
-            }
+            transactions = [...state, action.payload];
+            localStorage.setItem("transactions", JSON.stringify(transactions));
+            return transactions;
 
         case 'DELETE_TRANSACTION':
-            return {
-                ...state,
-                transactions: state.transactions.filter(
-                    transaction => transaction.id !== action.payload)
-            }
+            transactions = state.filter(
+                transaction => transaction.id !== action.payload);
+            localStorage.setItem("transactions", JSON.stringify(transactions));
+            return transactions;
 
         default:
             return state;

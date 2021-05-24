@@ -15,13 +15,12 @@ export const Chart = () => {
 
     const { transactions } = useContext(GlobalContext);
     
-    let sortedTrans = transactions.sort(function(a, b) {
+    /* let sortedTrans = transactions.sort(function(a, b) {
         var dateA = new Date(a.createdDate), dateB = new Date(b.createdDate);
         return dateA - dateB;
-    });
+    }); */
     
-
-    let monthlyIncome = sortedTrans.filter(item => item.amount > 0)
+    let monthlyIncome = transactions.filter(item => item.amount > 0)
     .reduce((months, item) => {
       let dateObj = new Date(item.createdDate);
       let monthyear = format(dateObj, 'MMM-yyyy');
@@ -33,7 +32,7 @@ export const Chart = () => {
       return months;
     }, {});
 
-    let monthlyExpense = sortedTrans.filter(item => item.amount < 0)
+    let monthlyExpense = transactions.filter(item => item.amount < 0)
     .reduce((months, item) => {
       let dateObj = new Date(item.createdDate);
       let monthyear = format(dateObj, 'MMM-yyyy');
@@ -48,20 +47,16 @@ export const Chart = () => {
     let valsIncome = Object.values(monthlyIncome);
     let valsExpense = Object.values(monthlyExpense);
     let monthlyAcc = [];
-
-    console.log(valsIncome);
-    console.log(valsExpense);
     let arrLength = longerArray(valsIncome, valsExpense);
-    console.log(arrLength);
 
     for (let i = 0; i < arrLength; i++){
-          let entries = {
-            ...valsIncome[i],
-            ...valsExpense[i]
-          }
-          monthlyAcc.push(entries);
+      let entries = {
+        ...valsIncome[i],
+        ...valsExpense[i]
+      }
+      monthlyAcc.push(entries);
     }
-    console.log (monthlyAcc);
+    //console.log (monthlyAcc);
 
     return (
       <ResponsiveContainer width="100%" height="100%">

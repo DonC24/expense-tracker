@@ -68,7 +68,7 @@ export const NewTransaction = () => {
                     placeholder="Enter name of transaction" />
                 </div>
                 <div className="form-control">
-                <label htmlFor="expType">Choose a type:</label>
+                <label htmlFor="expType">Choose a category:</label>
                     <select 
                     id="expType" 
                     name="expType"

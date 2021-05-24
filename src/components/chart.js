@@ -3,6 +3,13 @@ import { GlobalContext } from '../context/GlobalState';
 import { format } from 'date-fns';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+function longerArray(a, b) {
+  if(a.length > b.length || a.length === b.length){
+    return a.length;
+  } else if (b.length > a.length){
+    return b.length;
+  }
+}
 
 export const Chart = () => {
 
@@ -40,22 +47,21 @@ export const Chart = () => {
 
     let valsIncome = Object.values(monthlyIncome);
     let valsExpense = Object.values(monthlyExpense);
-
     let monthlyAcc = [];
 
-    for (let i = 0; i < valsIncome.length; i++){
+    console.log(valsIncome);
+    console.log(valsExpense);
+    let arrLength = longerArray(valsIncome, valsExpense);
+    console.log(arrLength);
 
-      for (let j = 0; j < valsExpense.length; j++){
-        if(valsIncome[i].month === valsExpense[j].month) {
+    for (let i = 0; i < arrLength; i++){
           let entries = {
             ...valsIncome[i],
-            ...valsExpense[j]
+            ...valsExpense[i]
           }
           monthlyAcc.push(entries);
-        }
-      }
     }
-    //console.log (monthlyAcc);
+    console.log (monthlyAcc);
 
     return (
       <ResponsiveContainer width="100%" height="100%">

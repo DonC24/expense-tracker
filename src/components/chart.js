@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function longerArray(a, b) {
-  if(a.length > b.length || a.length === b.length){
+  if (a.length > b.length || a.length === b.length){
     return a.length;
   } else if (b.length > a.length){
     return b.length;
@@ -14,11 +14,6 @@ function longerArray(a, b) {
 export const Chart = () => {
 
     const { transactions } = useContext(GlobalContext);
-    
-    /* let sortedTrans = transactions.sort(function(a, b) {
-        var dateA = new Date(a.createdDate), dateB = new Date(b.createdDate);
-        return dateA - dateB;
-    }); */
     
     let monthlyIncome = transactions.filter(item => item.amount > 0)
     .reduce((months, item) => {

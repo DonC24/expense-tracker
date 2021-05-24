@@ -4,12 +4,11 @@ import { GlobalContext } from '../context/GlobalState';
 
 export const NewTransaction = () => {
     const { transactions } = useContext(GlobalContext);
+    const { addTransaction } = useContext(GlobalContext);
     const [TransactionName, setTransactionName] = useState('');
     const [expType, setExpType] = useState('income');
     const [amount, setAmount] = useState(0);
     const [createdDate, setCreatedDate] = useState(new Date());
-
-    const { addTransaction } = useContext(GlobalContext);
 
     const onSubmit = e => {
         e.preventDefault();
@@ -33,8 +32,6 @@ export const NewTransaction = () => {
         let todayStringify = JSON.stringify(today);
         let todayStr = todayStringify.replace(/"/g, "");
         setCreatedDate(todayStr);
-        console.log(todayStr);
-
 
         const newTransaction = {
             id: newId,

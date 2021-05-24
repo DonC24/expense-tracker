@@ -5,7 +5,7 @@ import { GlobalContext } from '../context/GlobalState';
 export const NewTransaction = () => {
     const { transactions } = useContext(GlobalContext);
     const [TransactionName, setTransactionName] = useState('');
-    const [expType, setExpType] = useState('plus');
+    const [expType, setExpType] = useState('income');
     const [amount, setAmount] = useState(0);
     const [createdDate, setCreatedDate] = useState(new Date());
 
@@ -26,24 +26,29 @@ export const NewTransaction = () => {
             newId = lastId + 1;
         }
 
-        if(expType === 'minus'){
+        if(expType === 'expense'){
             expAmount = amount * -1;
         }
         
-        setCreatedDate(today);
+        let todayStringify = JSON.stringify(today);
+        let todayStr = todayStringify.replace(/"/g, "");
+        setCreatedDate(todayStr);
+        console.log(todayStr);
+
 
         const newTransaction = {
             id: newId,
             TransactionName: TransactionName,
             amount: parseFloat(expAmount),
-            createdDate: today
+            type: expType,
+            createdDate: todayStr
         }
         console.log(newTransaction);
         addTransaction(newTransaction);
 
         //clear states
         setTransactionName('');
-        setExpType('plus');
+        setExpType('income');
         setAmount(0);
         setCreatedDate(new Date());
 
@@ -69,8 +74,8 @@ export const NewTransaction = () => {
                     name="expType"
                     value={expType}
                     onChange={(e) => setExpType(e.target.value)}>
-                        <option value="plus">Income</option>
-                        <option value="minus">Expense</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
                     </select>
                 </div>
                 <div className="form-control">

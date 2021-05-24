@@ -4,6 +4,8 @@ export default function AppReducer (state, action) {
         case 'ADD_TRANSACTION':
             transactions = [...state, action.payload];
             localStorage.setItem("transactions", JSON.stringify(transactions));
+            console.log("add transaction");
+            console.log(transactions);
             return transactions;
 
         case 'DELETE_TRANSACTION':

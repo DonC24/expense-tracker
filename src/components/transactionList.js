@@ -6,7 +6,7 @@ export const TransactionList = () => {
     const { transactions } = useContext(GlobalContext);
     const [listOrder, setListOrder] = useState('desc');
 
-
+    //sorting transactions for output
     let arr;
     if(listOrder === 'asc'){
         arr = transactions.sort(function(a, b) {

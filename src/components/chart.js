@@ -39,11 +39,12 @@ export const Chart = () => {
       return months;
     }, {});
 
-    let valsIncome = Object.values(monthlyIncome);
+    let valsIncome = Object.values(monthlyIncome); //get values (object) of each month in an array
     let valsExpense = Object.values(monthlyExpense);
     let monthlyAcc = [];
-    let arrLength = longerArray(valsIncome, valsExpense);
+    let arrLength = longerArray(valsIncome, valsExpense); //compare which array is longer, get length
 
+    //merge monthly income and expense into object for chart
     for (let i = 0; i < arrLength; i++){
       let entries = {
         ...valsIncome[i],

@@ -1,7 +1,7 @@
 # Expense Tracker with graph and list sorting
 
 Simple expense tracker that has a bar graph to show monthly income/expenses. History list that can be sorted by date.
-I used functional components with hooks and context API, with local storage to store data.
+I used React that has functional components with hooks and context API, with local storage to store data.
 
 ## Usage
 

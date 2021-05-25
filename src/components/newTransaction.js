@@ -18,6 +18,7 @@ export const NewTransaction = () => {
         let expAmount = amount;
         let today = new Date();
 
+        //create id for each transaction
         if(transactions.length === 0) {
             newId = lastId + 1;
         } else {
@@ -30,7 +31,7 @@ export const NewTransaction = () => {
         }
         
         let todayStringify = JSON.stringify(today);
-        let todayStr = todayStringify.replace(/"/g, "");
+        let todayStr = todayStringify.replace(/"/g, ""); //remove extra characters from stringify
         setCreatedDate(todayStr);
 
         const newTransaction = {
@@ -40,7 +41,7 @@ export const NewTransaction = () => {
             type: expType,
             createdDate: todayStr
         }
-        console.log(newTransaction);
+        //console.log(newTransaction);
         addTransaction(newTransaction);
 
         //clear states

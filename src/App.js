@@ -19,7 +19,6 @@ function App() {
         <div id="chart-container" style={{height: 500+"px"}}>
           <Chart />
         </div>
-        
         <TransactionList />
         <NewTransaction />
       </div>

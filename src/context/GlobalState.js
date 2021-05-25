@@ -15,7 +15,7 @@ const initialState = [
 let strInitialState = JSON.stringify(initialState);
 localStorage.setItem('transactions', strInitialState);
 
-const localState = JSON.parse(localStorage.getItem("transactions")) || [];
+const localState = JSON.parse(localStorage.getItem("transactions")) || []; //get items from localstorage
 
 //Create ConTransactionName
 //export const GlobalContext = createContext(initialState);

@@ -41,7 +41,7 @@ export const NewTransaction = () => {
             type: expType,
             createdDate: todayStr
         }
-        //console.log(newTransaction);
+
         addTransaction(newTransaction);
 
         //clear states

@@ -52,7 +52,6 @@ export const Chart = () => {
       }
       monthlyAcc.push(entries);
     }
-    //console.log (monthlyAcc);
 
     return (
       <ResponsiveContainer width="100%" height="100%">
